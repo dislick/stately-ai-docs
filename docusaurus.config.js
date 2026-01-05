@@ -50,16 +50,16 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/statelyai/docs/tree/main/',
 
-          lastVersion: 'current',
+          lastVersion: '4',
           includeCurrentVersion: true,
           versions: {
             current: {
               label: 'XState v5',
+              path: 'xstate-v5',
               banner: 'none',
             },
             4: {
               label: 'XState v4',
-              path: 'xstate-v4',
               banner: 'none',
             },
           },
@@ -113,39 +113,44 @@ const config = {
         // Unbreak specific pages we know are broken where the structure changed between XState v4 and v5
         redirects: [
           {
-            to: '/docs/xstate-v4/xstate/model-based-testing/intro',
+            to: '/docs/xstate/model-based-testing/intro',
             from: '/docs/category/xstate-model-based-testing',
           },
           {
-            to: '/docs/xstate-v4/xstate/actors/parent-child-communication',
-            from: '/docs/xstate/actors/parent-child-communication',
+            to: '/docs/xstate/actors/parent-child-communication',
+            from: '/docs/xstate-v5/xstate/actors/parent-child-communication',
           },
           {
-            to: '/docs/xstate-v4/xstate/typescript/type-helpers',
-            from: '/docs/xstate/typescript/type-helpers',
+            to: '/docs/xstate/typescript/type-helpers',
+            from: '/docs/xstate-v5/xstate/typescript/type-helpers',
           },
           {
-            to: '/docs/states',
+            to: '/docs/xstate-v5/states',
             from: '/docs/states/intro',
           },
           {
-            to: '/docs/state-machines-and-statecharts',
+            to: '/docs/xstate-v5/state-machines-and-statecharts',
             from: '/docs/xstate/basics/what-is-a-statechart',
           },
           {
-            to: '/docs/typegen',
+            to: '/docs/xstate-v5/typegen',
             from: '/docs/xstate/typescript/typegen',
           },
           {
             // Redirect to the new "Getting Started" page from the Sky category page (until we have a Sky category page)
-            to: '/docs/stately-sky-getting-started',
+            to: '/docs/xstate-v5/stately-sky-getting-started',
             from: '/docs/sky',
+          },
+          {
+            // Redirect old v4 path to new location
+            to: '/docs',
+            from: '/docs/xstate-v4',
           },
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/docs')) {
-            // Redirect everything from /docs/xstate-v5 to /docs (to unbreak Google search results)
-            return [existingPath.replace('/docs', '/docs/xstate-v5')];
+            // Redirect everything from /docs/xstate-v4 to /docs (v4 is now default)
+            return [existingPath.replace('/docs', '/docs/xstate-v4')];
           }
           return undefined; // Return a falsy value: no redirect created
         },
