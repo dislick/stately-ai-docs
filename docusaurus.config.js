@@ -113,11 +113,6 @@ const config = {
         // Unbreak specific pages we know are broken where the structure changed between XState v4 and v5
         redirects: [
           {
-            // Redirect /docs to the first v4 doc
-            to: '/docs/studio',
-            from: '/docs',
-          },
-          {
             to: '/docs/xstate/model-based-testing/intro',
             from: '/docs/category/xstate-model-based-testing',
           },
